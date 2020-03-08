@@ -1,0 +1,259 @@
+@font-face {
+	font-family: 'Simpsons Fonts';
+	src: url('fonts/Simpsonfont.otf') format('OpenType');
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, sans-serif;
+}
+
+header {
+	background: #000;
+}
+
+header ul {
+	width: 80%;
+	margin: auto;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	list-style-type: none;
+	padding: 0;
+	color: #fff;
+}
+
+header ul li a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.main {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	height: 100vh;	
+}
+
+.block {
+	flex-basis: 33%;
+}
+
+.block-game {
+	background: linear-gradient(to bottom, #9be2fe 0%,#67d1fb 100%);
+	position: relative;
+	overflow: hidden;
+	text-align: center;	
+	color: #fff;
+	border-right: 10px solid #000;
+}
+
+.block-game__title {
+	background: rgba(255,255,255,.4);
+	padding: 10px;
+	font-family: 'Simpsons Fonts';
+	text-shadow: -3px 2px 2px rgba(0, 0, 0, .6);
+}
+
+.block-score {
+	background: rgba(255,255,255,.4);
+	padding: 2px;
+	font-size: 20px;
+	font-family: 'Simpsons Fonts';
+	position: relative;
+	z-index: 2;
+}
+
+.donut {
+	z-index: 99;
+	position: relative;
+	max-width: 400px;
+	margin: auto;
+}
+
+.donut:hover {
+	animation: bounceDonut 1s;
+}
+
+.donut img {
+	width: 100%;
+}
+
+.cloud {
+	position: absolute;	
+	max-width: 250px;
+	z-index: 0;	
+	animation: moveCloud 15s infinite linear;
+}
+
+.cloud:nth-child(1) {
+	top: 200px;
+}
+
+.cloud:nth-child(2) {
+	top: 400px;
+	animation-direction: reverse;
+	animation-delay: 3s;
+	left: 100%;
+}
+
+.cloud:nth-child(3) {
+	top: 300px;
+	animation-direction: alternate;
+	animation-delay: 5s;
+	left: 100%;
+}
+
+.block-achivements {
+	background: linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+	border-right: 10px solid #000;
+}
+
+.block-shop {
+	background: linear-gradient(to bottom, #2d91c2 0%, #1e528e 100%);
+}
+
+.block-shop__logo {
+	margin: auto;
+	margin-top: 10px;
+	max-width: 80%;
+}
+
+.block-shop__logo img {
+	width: 100%;
+}
+
+.block-shop__upgrades {
+	position: relative;
+}
+
+.block-shop__upgrades h2, .block-shop__improvements h2 {
+	color: #fff;
+	padding: 5px;
+	background: rgba(255, 255, 255, .4);
+	font-family: 'Simpsons Fonts', sans-serif;
+}
+
+.block-shop__item, .block-shop__improve {
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background-color: #fff;
+	border-radius: 12px;
+	cursor: pointer;
+	text-align: center;
+	margin-left: 10px;
+	position: relative;
+}
+
+.block-shop__item:hover .block-shop__info, .block-shop__improve:hover .block-shop__info {
+	visibility: visible;
+	opacity: 1;
+}
+
+.block-shop__item img, .block-shop__improve img {
+	width: 80%;
+	height: 100%;
+}
+
+.block-shop__info {
+	position: absolute;
+	padding: 10px;
+	left: -260px;
+	top: 0;
+	background-color: rgba(0,0,0,.2);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity .6s;
+}
+
+.block-shop__title {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+	color: #fff;
+}
+
+.block-shop__info h6 {
+	font-weight: 700;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+.block-shop__info p {
+	padding: 0;
+	margin: 0;
+}
+
+.block-shop__message {
+    margin-left: 10px;
+    color: #df6386;
+    transition: .3s all;
+}
+
+.descr {
+	text-align: center;
+	color: #fff;
+}
+
+.cost img {
+	width: 25px;
+	vertical-align: bottom;
+}
+
+@keyframes moveCloud {
+  0% {
+  	left: -80%;
+  }
+  20% {
+    left: -40%;
+    }
+  40% {
+     left: 20%;
+    }
+  60% {
+    left: 60%;
+    }
+  80% {
+  	left: 100%;
+  }
+  100% {
+  	left: 100%;	
+  }
+}
+
+@keyframes bounceDonut {
+	0% {
+		transform: scale(1.0);
+	}
+	20% {
+		transform: scale(1.1);
+	}
+	30% {
+		transform: scale(1.0);
+	}
+	40% {
+		transform: scale(1.08);
+	}
+	50% {
+		transform: scale(1.0);
+	}
+	60% {
+		transform: scale(1.06);
+	}
+	70% {
+		transform: scale(1.0);
+	}
+}
