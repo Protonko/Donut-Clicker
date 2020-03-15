@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	//Пассивный доход каждую секунду
 	function passiveIncome() {
 		setInterval(() => {
-			count = Math.round(count + passiveIncrease / 10);
+			count = Math.ceil(count + passiveIncrease / 10);
 			localStorage.setItem('dataCount',  count);
 			total.textContent = `${count} donuts`;
 		}, 100);
