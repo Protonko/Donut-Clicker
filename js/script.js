@@ -1,4 +1,4 @@
-import {IMPROVEMENTS_ARRAY, UPGRADES_ARRAY} from './static';
+import {IMPROVEMENTS_ARRAY, UPGRADES_ARRAY} from './static.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	let donut = document.querySelector('.donut');
