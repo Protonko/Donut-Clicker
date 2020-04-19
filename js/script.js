@@ -1,3 +1,5 @@
+import {IMPROVEMENTS_ARRAY, UPGRADES_ARRAY} from './static';
+
 document.addEventListener('DOMContentLoaded', () => {
 	let donut = document.querySelector('.donut');
 	let total = document.querySelector('.block-score__total');
@@ -12,40 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	let showShopButton = document.querySelector('.show-shop');
 	let closeShopButton = document.querySelector('.hide-shop');
 	let isSound = true;
-	let upgradesArray = {
-		'hand' : {
-			'bonus' : 1,
-			'cost' : 100
-		},
-		'duff' : {
-			'bonus' : 10,
-			'cost' : 1000
-		},
-		'simpsons' : {
-			'bonus' : 2,
-			'cost' : 10000
-		}
-	}
-	let improvementsArray = {
-		'character' : {
-			'icon' : 'img/bart.png',
-			'bonus' : 4,
-			'cost' : 300,
-			'background' : 'img/characters-background.png',
-		},
-		'lisa' : {
-			'icon': 'img/lisa.png',
-			'bonus' : 40,
-			'cost' : 5000,
-			'background' : 'img/kitchen.jpg',
-		},
-		'springfieldNPP' : {
-			'icon' : 'img/MrBurns.png',
-			'bonus' : 400,
-			'cost' : 25000,
-			'background' : 'img/springfieldNPP.png',
-		}
-	}
 	let count = +localStorage.getItem('dataCount');
 	let donutsPerClick = +localStorage.getItem('dataDonuts');
 	let passiveIncrease = +localStorage.getItem('dataPassiveIncrease');
@@ -79,12 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!e.target.closest('.block-shop__item')) return;
 		let boostBlock = e.target.closest('.block-shop__item');
 		let boost = boostBlock.dataset.upgrade;
-		if (count >= upgradesArray[boost].cost) {
+		if (count >= UPGRADES_ARRAY[boost].cost) {
 			playAudio(buyAudio);
-			count -= upgradesArray[boost].cost;
+			count -= UPGRADES_ARRAY[boost].cost;
 			(boost == 'simpsons') ?
-				  donutsPerClick = donutsPerClick * Number(upgradesArray[boost].bonus)
-				: donutsPerClick = donutsPerClick + Number(upgradesArray[boost].bonus);
+				  donutsPerClick = donutsPerClick * Number(UPGRADES_ARRAY[boost].bonus)
+				: donutsPerClick = donutsPerClick + Number(UPGRADES_ARRAY[boost].bonus);
 			increaseBoost(boostBlock, donutsPerClick, 'dataDonuts');
 		} else {
 			errorMessage(upgrades);
@@ -95,10 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!e.target.closest('.block-shop__improve')) return;
 		let improveBlock =  e.target.closest('.block-shop__improve')
 		let improve = improveBlock.dataset.improve;
-		if (count >= improvementsArray[improve].cost) {
+		if (count >= IMPROVEMENTS_ARRAY[improve].cost) {
 			playAudio(buyAudio);
-			count -= improvementsArray[improve].cost;
-			passiveIncrease = passiveIncrease + Number(improvementsArray[improve].bonus);
+			count -= IMPROVEMENTS_ARRAY[improve].cost;
+			passiveIncrease = passiveIncrease + Number(IMPROVEMENTS_ARRAY[improve].bonus);
 			increaseBoost(improveBlock, passiveIncrease, 'dataPassiveIncrease');
 			donutsPerSecondText.textContent = `per second ${passiveIncrease}`;
 			drawAchievement(improve);
@@ -137,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		let character = document.createElement('div');
 		character.className = 'block-achievements-container__character';
 		let characterImage = document.createElement('img');
-		characterImage.setAttribute('src', improvementsArray[nameObj].icon);
+		characterImage.setAttribute('src', IMPROVEMENTS_ARRAY[nameObj].icon);
 		// Проверяем, отрисован ли "дом" персонажа
 		if (achievements.querySelector(`div[data-title="${nameObj}"]`)) {
 			let achievementBlock = achievements.querySelector(`div[data-title="${nameObj}"]`);
@@ -148,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			achievementBlock.dataset.title = nameObj;
 			achievementBlock.className = 'block-achievements-container';
 			achievements.append(achievementBlock);
-			achievementBlock.style.backgroundImage = `url("${improvementsArray[nameObj].background}")`;
+			achievementBlock.style.backgroundImage = `url("${IMPROVEMENTS_ARRAY[nameObj].background}")`;
 			achievementBlock.append(character);
 			character.append(characterImage);
 		}
@@ -158,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		(isSound) ? sound.play() : false;
 	}
 
+	// Отображение магазина
 	function shoppingCart(toggle) {
 		shopBlock.style.display = toggle;
 	}
