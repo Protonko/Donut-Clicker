@@ -42,7 +42,7 @@ header ul li a {
 	display: -ms-flex;
 	display: -o-flex;
 	display: flex;
-	height: 100vh;	
+	height: 100%;
 }
 
 .block {
@@ -62,7 +62,8 @@ header ul li a {
 	display: flex;
 	border-bottom: 10px solid #000000;
 	flex-wrap: wrap;
-	max-height: 33vh;
+	min-height: 20%;
+	max-height: 33%;
 	overflow: hidden;
 }
 
@@ -82,6 +83,38 @@ header ul li a {
 	text-align: center;	
 	color: #fff;
 	border-right: 10px solid #000;
+}
+
+.hide-shop {
+	font-size: 16px;
+	line-height: 100%;
+	position: fixed;
+	top: 54px;
+	right: 10px;
+	padding: 9px 10px;
+	display: none;
+	outline: none;
+	border: none;
+	border-radius: 50%;
+	background-color: #ffffff;
+	color: #ffafc3;
+}
+
+.block-game__shop-button {
+	position: fixed;
+	top: 54px;
+	right: 20px;
+	padding: 10px 10px 8px 8px;
+	display: none;
+	outline: none;
+	border: none;
+	border-radius: 50%;
+	background-color: #ffffff;
+}
+
+.block-game__shop-button img {
+	width: 25px;
+	height: 22px;
 }
 
 .block-game__title {
@@ -289,7 +322,37 @@ header ul li a {
 	}
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
+	.main {
+		flex-direction: column;
+	}
+	.block-achievements,
+	header ul li:last-child {
+		display: none;
+	}
+	.block-shop {
+		position: fixed;
+		z-index: 99;
+		height: 100%;
+		display: none;
+	}
+	header ul li {
+		width: 49%;
+	}
+	.block-game {
+		border-right: 0;
+	}
+	.block-game__shop-button {
+		display: block;
+	}
+
+	.block-shop__item:hover .block-shop__info,
+	.block-shop__improve:hover .block-shop__info {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
 	.block-game, .block-shop {
 		flex-basis: 50%;
 	}

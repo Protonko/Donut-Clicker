@@ -2,12 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	let donut = document.querySelector('.donut');
 	let total = document.querySelector('.block-score__total');
 	let donutsPerSecondText = document.querySelector('.block-score__second');
+	let shopBlock = document.querySelector('.block-shop');
 	let upgrades = document.querySelector('.block-shop__upgrades');
 	let improvements = document.querySelector('.block-shop__improvements');
 	let achievements = document.querySelector('.block-achievements');
 	let clickAudio = document.getElementById('click');
 	let buyAudio = document.getElementById('buy');
 	let errorAudio = document.getElementById('error-sound');
+	let showShopButton = document.querySelector('.show-shop');
+	let closeShopButton = document.querySelector('.hide-shop');
 	let isSound = true;
 	let upgradesArray = {
 		'hand' : {
@@ -52,6 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	donut.addEventListener('click', increaseCounter);
 	upgrades.addEventListener('click', upgradeCoocking);
 	improvements.addEventListener('click', upgradePassive);
+
+	showShopButton.addEventListener('click', () => shoppingCart('block'));
+	closeShopButton.addEventListener('click', () => shoppingCart('none'));
 
 	function initCounter() {
 		if (donutsPerClick == 0) donutsPerClick = 1;
@@ -150,5 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Воспроизведение звука
 	function playAudio(sound) {
 		(isSound) ? sound.play() : false;
+	}
+
+	function shoppingCart(toggle) {
+		shopBlock.style.display = toggle;
 	}
 });
